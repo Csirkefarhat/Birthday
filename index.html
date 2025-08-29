@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>szulinap vagy mi!</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Boldog szülinapot Nikikém!</h1>
+        <div class="balloons">
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+            <div class="balloon"></div>
+        </div>
+        <p class="balloon-note">ezek itt balloonok akarnak lenni, szebben nem sikerült na</p>
+    </header>
+
+    <section class="message-section">
+        <p>Ha már itten eljött ez a csodás napocska gondoltam összehozok egy kis weboldald magának.</p>
+        <p>Remélem élményekkel és barátokkal teli napocskád lesz, hangüziket majd várom ofc.</p>
+        <p>PS: kérlek majd egyeztessünk egy csodaszép szeptemberi délutánról, hogy az ajidat is át tudjam adni.</p>
+    </section>
+
+    <div class="cake">
+        <img src="https://img1.picmix.com/output/pic/normal/3/7/7/6/10356773_a623a.gif" alt="nyugger gif" />
+    </div>
+
+    <button onclick="confettiBlast()">🎉 Confetti geci!</button>
+
+    <footer>
+        <p>Sok szerivel itten a speckó napra!</p>
+    </footer>
+</div>
+
+<script>
+    const colors = ['#ff6b6b', '#4ecdc4', '#ffd166', '#6a0572'];
+    for (let i = 0; i < 12; i++) {
+        const bgBalloon = document.createElement('div');
+        Object.assign(bgBalloon.style, {
+            left: `${Math.random() * 100}vw`,
+            background: colors[i % colors.length],
+            animationDelay: `${i * 1.5}s`,
+            width: `${30 + Math.random() * 20}px`,
+            height: `${40 + Math.random() * 25}px`
+        });
+        bgBalloon.className = 'background-balloon';
+        document.body.appendChild(bgBalloon);
+    }
+
+    function confettiBlast() {
+        const confettiColors = ['#ff6b6b', '#ffd166', '#4ecdc4', '#6a0572'];
+        for (let i = 0; i < 40; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.top = '-10px';
+            const size = 5 + Math.random() * 10;
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.animationDelay = `${Math.random() * 3}s`;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 3500);
+        }
+    }
+</script>
+</body>
+</html>
